@@ -1,30 +1,50 @@
-
+/*
+ * File: 0-bubble_sort.c
+ */
 
 #include "sort.h"
 
-
-void bubble_sort(int *array, size_t size)
+/*
+ * swap_values - Exchange two integers in an array.
+ * @val1: The first integer to exchange.
+ * @val2: The second integer to exchange.
+ */
+void swap_values(int *val1, int *val2)
 {
-	size_t i, j;
 	int tmp;
 
-	if (array == NULL || size < 2)
+	tmp = *val1;
+	*val1 = *val2;
+	*val2 = tmp;
+}
+
+/**
+ * bubble_sort - Arrange an array of integers in ascending order.
+ * @arr: An array of integers to arrange.
+ * @n: The size of the array.
+ *
+ * Description: Prints the array after each exchange.
+ */
+void bubble_sort(int *arr, size_t n)
+{
+	size_t i, len = n;
+	bool bubbles = false;
+
+	if (arr == NULL || n < 2)
 		return;
 
-	for (i = 0; i < size; i++)
+	while (bubbles == false)
 	{
-		for (j = 0; j < size - 1; j++)
+		bubbles = true;
+		for (i = 0; i < len - 1; i++)
 		{
-			if (array[j + 1] < array[j])
+			if (arr[i] > arr[i + 1])
 			{
-				/* Swap adjacent elements */
-				tmp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = tmp;
-
-				/* Print the current state of the array */
-				print_array(array, size);
+				swap_values(arr + i, arr + i + 1);
+				print_array(arr, n);
+				bubbles = false;
 			}
 		}
+		len--;
 	}
 }
