@@ -1,32 +1,29 @@
+
+
 #include "sort.h"
 
-/**
- *
- * bubble_sort -> Arranges an array of integers in ascending order
- *               through the bubble sort method.
- * @arr: Pointer to the array to undergo sorting.
- */
-void bubble_sort(int *arr, size_t n)
+
+void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
 	int tmp;
 
-	if (arr == NULL || n < 2)
+	if (array == NULL || size < 2)
 		return;
 
-	for (i = 0; i < n; i++)
+	for (i = 0; i < size; i++)
 	{
-		for (j = 0; j < n - 1; j++)
+		for (j = 0; j < size - 1; j++)
 		{
-			if (arr[j + 1] < arr[j])
+			if (array[j + 1] < array[j])
 			{
-				/* Exchange adjacent elements */
-				tmp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = tmp;
+				/* Swap adjacent elements */
+				tmp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = tmp;
 
-				/* Display the current state of the array */
-				print_array(arr, n);
+				/* Print the current state of the array */
+				print_array(array, size);
 			}
 		}
 	}
